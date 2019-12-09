@@ -12,13 +12,16 @@ function applyApiMiddleware(app) {
         prefix: `/api/${apiVersion}`,
     });
 
-    fs.readdirSync(__dirname)
-        .filter(file => file.indexOf('.') !== 0 && file !== baseName)
-        .forEach(file => {
-            console.log(file);
-            const api = require(path.join(__dirname, file))(Router);
-            router.use(api.routes());
-        });
+    // fs.readdirSync(__dirname)
+    //     .filter(file => file.indexOf('.') !== 0 && file !== baseName)
+    //     .forEach(file => {
+    //         console.log(file);
+    //         const api = require(path.join(__dirname, file))(Router);
+    //         router.use(api.routes());
+    //     });
+
+    const gasStationsApi = require('./gasStations')(Router);
+    router.use(gasStationsApi.routes());
 
     app.use(router.routes()).use(router.allowedMethods());
 }

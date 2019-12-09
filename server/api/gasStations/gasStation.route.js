@@ -7,7 +7,7 @@ module.exports = Router => {
         prefix: `/gas-stations`,
     });
 
-    router.get('/all', controller.getAll);
+    router.get('/radius/:latitude/:longitude/:distance/:fuelType/:sortBy', controller.getAll);
 
     return router;
 };

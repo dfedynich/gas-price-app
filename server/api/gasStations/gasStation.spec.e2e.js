@@ -16,10 +16,10 @@ describe('Gas Stations route test', () => {
     //     server.close();
     // });
 
-    test('Should catch the error', async () => {
-        //const server = await http.createServer(app.callback()).listen(3000);
-        const response = await got.get('http://localhost:3000//api/v1/gas-stations/all');
-        expect(response.status).toEqual(200);
-        expect(response.type).toEqual('json');
-    });
+    // test('Should catch the error', async () => {
+    //     //const server = await http.createServer(app.callback()).listen(3000);
+    //     const response = await got.get('http://localhost:3000//api/v1/gas-stations/all');
+    //     expect(response.status).toEqual(200);
+    //     expect(response.type).toEqual('json');
+    // });
 });
