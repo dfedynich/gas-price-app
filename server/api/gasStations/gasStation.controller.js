@@ -10,15 +10,30 @@ exports.getAll = async ctx => {
 
     const domainGasStations = await Promise.all(gasStations.map(async station => {
         const companyDomain = await companyDomainsService.getDomainByName(station.station);
-
-        return {
+        const newGasStation = getGasStation({
             ...station,
             companyDomain
-        }
+        });
+
+        return newGasStation;
     }));
-
-
 
     ctx.status = 200;
     ctx.body = domainGasStations;
 };
+
+const getGasStation = (station) => ({
+    id: station.id,
+    name: station.companyDomain.name,
+    logo: station.companyDomain.logo,
+    zip: station.zip,
+    prices: {
+        regular: station.reg_price,
+        midGrade: station.mid_price,
+        premium: station.pre_price,
+        diesel: station.diesel_price
+    },
+    address: station.address,
+    region: station.region,
+    distance: station.distance
+});

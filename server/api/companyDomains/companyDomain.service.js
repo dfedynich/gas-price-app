@@ -10,7 +10,6 @@ exports.getDomainByName = async (name) => {
         return getAnonymousDomain(name);
     }
 
-
     try {
         const { url, options } = getRequestParams(name);
         const response = await got(url, options);
@@ -39,6 +38,7 @@ const getRequestParams = (name) => ({
         headers: {
             'Authorization': `Bearer ${companyFeed.authKey}`
         },
+        responseType: 'json',
         cache: domainsCache
     }
 });

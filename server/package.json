@@ -1,7 +1,7 @@
 {
-  "name": "gas-price-app",
+  "name": "gas-price-app-koa-server",
   "version": "1.0.0",
-  "description": "The Gas Price App displays a list of local gas stations and their prices",
+  "description": "The Gas Price App feeds a list of local gas stations and their prices",
   "main": "index.js",
   "scripts": {
     "test": "jest",
