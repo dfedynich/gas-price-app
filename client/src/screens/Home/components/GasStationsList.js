@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { useDataApi } from './../../../hooks/useDataApi';
+import { useScrollRenderingDispenser } from './../../../hooks/useScrollRenderingDispenser';
 import OverlayLayout from './../../../layouts/OverlayLayout';
 import Notification from './../../../components/Notification';
 import { getAllByGeo } from './../../../services/gasStations/gasStation.api';
@@ -19,7 +20,6 @@ const GasStationsListItem = styled.li`
   }
 `;
 
-
 const GasStationsList = ({latitude, longitude}) => {
     const [{ data, isLoading, isError }, doFetch] = useDataApi(
         {
@@ -28,6 +28,7 @@ const GasStationsList = ({latitude, longitude}) => {
             initialData: []
         }
     );
+    const {dispensedItems} = useScrollRenderingDispenser(data);
 
     const renderOverlayNotification = (message) => (
         <OverlayLayout>
@@ -42,7 +43,7 @@ const GasStationsList = ({latitude, longitude}) => {
 
         return (
             <StyledGasStationsList>
-                {data.map(item => (
+                {dispensedItems.map(item => (
                     <GasStationsListItem key={item.id}>
                         <Card
                             title={item.name}
