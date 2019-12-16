@@ -4,9 +4,11 @@
   "description": "The Gas Price App feeds a list of local gas stations and their prices",
   "main": "index.js",
   "scripts": {
+    "start": "npx nodemon index.js",
     "test": "jest",
     "test:e2e": "concurrently \"npm start\"  \"npx jest -c jest.config.e2e.json\"",
-    "start": "npx nodemon index.js"
+    "pact:verify": "node ./pact/verifyPacts.js",
+    "test:pact": "concurrently --kill-others \"npm start\" \"npm run pact:verify\""
   },
   "repository": {
     "type": "git",
@@ -20,12 +22,14 @@
   },
   "homepage": "https://github.com/dfedynich/gas-price-app#readme",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
     "@koa/router": "^8.0.2",
     "got": "^10.0.2",
     "koa": "^2.11.0",
     "koa-logger": "^3.2.1"
   },
   "devDependencies": {
+    "@pact-foundation/pact": "^9.5.1",
     "concurrently": "^5.0.0",
     "jest": "^24.9.0",
     "nodemon": "^2.0.1",

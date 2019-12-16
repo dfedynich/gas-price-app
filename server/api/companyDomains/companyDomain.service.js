@@ -45,7 +45,7 @@ const getRequestParams = (name) => ({
 
 const getAnonymousDomain = (name) => ({
     'domain': null,
-    'logo': companyFeed.logoNotFound,
+    'logo': null,
     'name': name
 });
 

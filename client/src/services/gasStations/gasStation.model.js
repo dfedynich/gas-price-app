@@ -5,7 +5,9 @@ function importAll (r) {
     return r.keys().map(r);
 }
 
-const gasStationImages = importAll(require.context('../../assets/images/gasStations', false, /\.(png|jpe?g|svg)$/)).map(r => r.default);
+const gasStationImages = process.env.NODE_ENV !== 'test'
+    ? importAll(require.context('../../assets/images/gasStations', false, /\.(png|jpe?g|svg)$/)).map(r => r.default)
+    : [];
 
 export default class GasStationModel extends ApiModel {
     constructor() {
@@ -16,10 +18,6 @@ export default class GasStationModel extends ApiModel {
 
         if (!this.prices) {
             this.prices = [];
-        }
-
-        if (!this.logo) {
-            this.logo = 'https://logo.clearbit.com/sunocolp.com';
         }
 
         this.stationImage = this.getAvatarUrl();

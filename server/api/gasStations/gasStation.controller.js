@@ -4,9 +4,10 @@ const companyDomainsService = require('../companyDomains/companyDomain.service')
 const gasStationService = require('./gasStation.service');
 
 exports.getAll = async ctx => {
-    const { latitude, longitude, distance = 5, fuelType = 'reg', sortBy = 'price'} = ctx.params;
+    const { latitude, longitude } = ctx.params;
+    const { distance = 5, fuelType = 'reg', sortBy = 'distance'} = ctx.query;
+
     const gasStations = await gasStationService.getStationsByGeolocation({latitude, longitude, distance, fuelType, sortBy});
-    console.log(gasStations.length);
 
     const domainGasStations = await Promise.all(gasStations.map(async station => {
         const companyDomain = await companyDomainsService.getDomainByName(station.station);
@@ -19,7 +20,9 @@ exports.getAll = async ctx => {
     }));
 
     ctx.status = 200;
-    ctx.body = domainGasStations;
+    ctx.body = {
+        stations: domainGasStations
+    };
 };
 
 const getGasStation = (station) => ({
@@ -29,7 +32,7 @@ const getGasStation = (station) => ({
     zip: station.zip,
     prices: {
         regular: station.reg_price,
-        midGrade: station.mid_price,
+        medium: station.mid_price,
         premium: station.pre_price,
         diesel: station.diesel_price
     },

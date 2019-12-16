@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config --env.env=dev --open",
-    "build": "webpack --config webpack.config --env.env=prod"
+    "build": "webpack --config webpack.config --env.env=prod",
+    "test:pact": "cross-env CI=true NODE_ENV=test jest --runInBand --testMatch \"**/*.spec.pact.js\"",
+    "publish:pact": "node pact/publish.js"
   },
   "repository": {
     "type": "git",
@@ -29,13 +31,18 @@
     "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
+    "@pact-foundation/pact": "^9.5.1",
+    "@pact-foundation/pact-node": "^10.2.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2",
+    "node-fetch": "^2.6.0",
     "react-hot-loader": "^4.12.18",
     "react-test-renderer": "^16.12.0",
     "style-loader": "^1.0.0",
@@ -44,5 +51,11 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./jest.setup.js"
+    ]
   }
 }
