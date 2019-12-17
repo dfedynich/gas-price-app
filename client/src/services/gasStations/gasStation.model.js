@@ -41,6 +41,9 @@ GasStationModel.attributes = {
     logo: Attributes.String({
         modelKey: 'logo',
     }),
+    domain: Attributes.String({
+        modelKey: 'domain',
+    }),
     zip: Attributes.String({
         modelKey: 'zip',
     }),

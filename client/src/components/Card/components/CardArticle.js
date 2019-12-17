@@ -17,6 +17,10 @@ const CardTitle = styled.h3`
   margin: 0;
 `;
 
+const CardTitleLink = styled.a`
+  color: inherit;
+`;
+
 const CardListItemsCollection = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -43,7 +47,7 @@ const CardListItemValue = styled.div`
 `;
 
 
-function CardArticle({title, footer, listItems}) {
+function CardArticle({title, url, footer, listItems}) {
     const cardlistItems = (listItems && listItems.length > 0)
         ? (
             <CardListItemsCollection>
@@ -59,7 +63,15 @@ function CardArticle({title, footer, listItems}) {
 
     return (
         <StyledCardArticle>
-            <CardTitle>{title}</CardTitle>
+            {url
+                ? <CardTitleLink
+                    href={url}
+                    target="_blank"
+                  >
+                    <CardTitle>{title}</CardTitle>
+                  </CardTitleLink>
+                : <CardTitle>{title}</CardTitle>
+            }
             {cardlistItems}
             <CardFooter>{footer}</CardFooter>
         </StyledCardArticle>

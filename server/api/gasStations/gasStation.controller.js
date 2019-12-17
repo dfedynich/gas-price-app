@@ -28,6 +28,7 @@ exports.getAll = async ctx => {
 const getGasStation = (station) => ({
     id: station.id,
     name: station.companyDomain.name,
+    domain: station.companyDomain.domain && `http://${station.companyDomain.domain}`,
     logo: station.companyDomain.logo,
     zip: station.zip,
     prices: {

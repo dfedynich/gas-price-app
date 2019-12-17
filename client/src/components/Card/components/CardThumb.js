@@ -20,11 +20,23 @@ const CardAvatar = styled.div`
   top: 10px;
 `;
 
+const CardAvatarLink = styled.a`
+  display: block;
+  text-decoration: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  
+  &:hover {
+    box-shadow: 1px 1px 5px 3px #ffe500;
+  }
+`;
+
 const CardAvatarImg = styled.img` 
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 1px solid #CCC;
   background: #fff;
 `;
 
@@ -39,7 +51,7 @@ const CardBadge = styled.div`
 `;
 
 
-function CardThumb({badgeTitle, avatarImage, thumbImage}) {
+function CardThumb({name, badgeTitle, avatarImage, avatarUrl, thumbImage}) {
     return (
         <StyledCardThumb bgUrl={thumbImage}>
             {badgeTitle &&
@@ -49,7 +61,21 @@ function CardThumb({badgeTitle, avatarImage, thumbImage}) {
             }
             {avatarImage &&
                 <CardAvatar>
-                    <CardAvatarImg src={avatarImage}/>
+                    {avatarUrl
+                        ? <CardAvatarLink
+                            href={avatarUrl}
+                            target="_blank"
+                        >
+                            <CardAvatarImg
+                                src={avatarImage}
+                                alt={name}
+                            />
+                        </CardAvatarLink>
+                        : <CardAvatarImg
+                            src={avatarImage}
+                            alt={name}
+                        />
+                    }
                 </CardAvatar>
             }
         </StyledCardThumb>
@@ -59,6 +85,7 @@ function CardThumb({badgeTitle, avatarImage, thumbImage}) {
 CardThumb.propTypes = {
     badgeTitle: PropTypes.string,
     avatarImage: PropTypes.string,
+    avatarUrl: PropTypes.string,
     thumbImage: PropTypes.string
 };
 

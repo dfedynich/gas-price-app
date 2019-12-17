@@ -14,20 +14,23 @@ const StyledCard = styled.section`
   border-radius: 4px;
 `;
 
-function Card({title, badgeTitle, avatarImage, thumbImage, footer, listItems }) {
+function Card({title, badgeTitle, avatarImage, url, thumbImage, footer, listItems }) {
     return (
         <StyledCard>
             <HeroLayout
                 hero={
                     <CardThumb
+                        name={title}
                         badgeTitle={badgeTitle}
                         avatarImage={avatarImage}
+                        avatarUrl={url}
                         thumbImage={thumbImage}
                     />
                 }
                 summary={
                     <CardArticle
                         title={title}
+                        url={url}
                         footer={footer}
                         listItems={listItems}
                     />
@@ -41,6 +44,7 @@ Card.propTypes = {
     title: PropTypes.string,
     badgeTitle: PropTypes.string,
     avatarImage: PropTypes.string,
+    url: PropTypes.string,
     thumbImage: PropTypes.string,
     footer: PropTypes.string,
     listItems: PropTypes.arrayOf(PropTypes.shape({

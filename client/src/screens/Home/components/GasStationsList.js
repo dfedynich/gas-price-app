@@ -49,6 +49,7 @@ const GasStationsList = ({latitude, longitude}) => {
                             title={item.name}
                             badgeTitle={item.distance}
                             avatarImage={item.logo}
+                            url={item.domain}
                             thumbImage={item.stationImage}
                             footer={[item.address, item.zip].join(', ')}
                             listItems={Object.keys(item.prices).map(gasType => ({
