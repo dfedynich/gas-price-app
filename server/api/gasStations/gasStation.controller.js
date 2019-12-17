@@ -20,6 +20,7 @@ exports.getAll = async ctx => {
     }));
 
     ctx.status = 200;
+    ctx.set('Cache-Control', 'public, max-age=120');
     ctx.body = {
         stations: domainGasStations
     };
