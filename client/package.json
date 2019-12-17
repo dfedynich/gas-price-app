@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.config --env.env=prod",
     "test:pact": "cross-env CI=true NODE_ENV=test jest --runInBand --testMatch \"**/*.spec.pact.js\"",
     "publish:pact": "node -r dotenv/config pact/publish.js dotenv_config_path=./.env.example",
-    "test": "npm-run-all test:pact publish:pact"
+    "test:unit": "cross-env NODE_ENV=test TEST_ENV=unit jest --runInBand --testMatch \"**/*.spec.js\"",
+    "test": "npm-run-all test:unit test:pact publish:pact"
   },
   "repository": {
     "type": "git",
