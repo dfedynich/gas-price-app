@@ -4,7 +4,6 @@ const provider = require('../../../pact/provider');
 const { endPoints, getAllByGeo } = require('./gasStation.api');
 const { somethingLike: like, eachLike } = require('@pact-foundation/pact').Matchers;
 
-
 beforeAll(async () => {
     return await provider.setup();
 });
@@ -20,11 +19,11 @@ describe('#getGasStations', () => {
             uponReceiving: 'a request to retrieve gas stations list',
             withRequest: {
                 method: 'GET',
-                path: `/api/v1${endPoints.get}/lat/32.953695/long/-117.132800`,
+                path: `${process.env.API_PATH}/${process.env.API_VERSION}${endPoints.get}/lat/32.953695/long/-117.132800`,
                 query: {
                     'distance': '5',
                     'fuelType': 'reg',
-                    'sortBy': 'price'
+                    'sortBy': 'distance'
                 }
             },
             willRespondWith: {

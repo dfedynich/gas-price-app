@@ -1,9 +1,11 @@
 'use strict';
 
 const http = require('http');
+require('dotenv').config({ path: './.env.example' });
 const app = require('./app');
 
 const { port } = require('./config').server;
+
 
 async function bootstrap() {
     return http.createServer(app.callback()).listen(port);

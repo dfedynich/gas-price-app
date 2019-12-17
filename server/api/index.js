@@ -2,11 +2,11 @@
 
 const Router = require('@koa/router');
 
-const { apiVersion } = require('../config').server;
+const { apiVersion, apiPath } = require('../config').server;
 
 function applyApiMiddleware(app) {
     const router = new Router({
-        prefix: `/api/${apiVersion}`,
+        prefix: `${apiPath}/${apiVersion}`,
     });
 
     const gasStationsApi = require('./gasStations')(Router);

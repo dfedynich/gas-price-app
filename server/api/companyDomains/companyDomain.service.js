@@ -14,6 +14,8 @@ exports.getDomainByName = async (name) => {
         const { url, options } = getRequestParams(name);
         const response = await got(url, options);
 
+        console.log(response.url, 'cache status = ', response.isFromCache);
+
         return {
             ...response.body,
             'isCached': response.isFromCache

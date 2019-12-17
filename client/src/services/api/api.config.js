@@ -1,3 +1,3 @@
 export default {
-    apiUrl: 'http://localhost:3000/api/v1'
+    apiUrl: `${process.env.HOST}:${process.env.PORT}${process.env.API_PATH}/${process.env.API_VERSION}`
 };

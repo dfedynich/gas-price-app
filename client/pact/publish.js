@@ -3,8 +3,8 @@ let path = require('path');
 
 let opts = {
     pactFilesOrDirs: [path.resolve(__dirname, '../pacts')],
-    pactBroker: 'https://deniplane.pact.dius.com.au/',
-    pactBrokerToken: 'TRViSQ33wWFapMT8x5Xf0A',
+    pactBroker: process.env.PACT_BROKER,
+    pactBrokerToken: process.env.PACT_BROKER_TOKEN,
     consumerVersion: '2.0.0'
 };
 

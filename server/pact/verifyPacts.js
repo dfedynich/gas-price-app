@@ -2,10 +2,10 @@ const { Verifier } = require('@pact-foundation/pact');
 const packageJson = require('../package.json');
 
 let opts = {
-    providerBaseUrl: 'http://localhost:3000',
-    provider: 'gas-station-provider',
-    pactBrokerUrl: 'https://deniplane.pact.dius.com.au',
-    pactBrokerToken: 'TRViSQ33wWFapMT8x5Xf0A',
+    providerBaseUrl: `${process.env.HOST}:${process.env.PORT}`,
+    provider: process.env.PACT_PROVIDER,
+    pactBrokerUrl: process.env.PACT_BROKER,
+    pactBrokerToken: process.env.PACT_BROKER_TOKEN,
     publishVerificationResult: true,
     providerVersion: packageJson.version
 };

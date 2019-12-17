@@ -1,11 +1,10 @@
 module.exports = {
     gasFeed: {
-        apiUrl: 'http://devapi.mygasfeed.com/',
-        authKey: 'rfej9napna'
+        apiUrl: process.env.GAS_FEED_API_URL,
+        authKey: process.env.GAS_FEED_AUTH_KEY
     },
     companyFeed: {
-        apiUrl: 'https://company.clearbit.com/v1/',
-        authKey: 'sk_8130ef1c64831dd09b2b44b0d8d6b542',
-        logoNotFound: 'https://cdn3.iconfinder.com/data/icons/map/500/gasstation-128.png'
+        apiUrl: process.env.COMPANY_FEED_API_URL,
+        authKey: process.env.COMPANY_FEED_AUTH_KEY
     }
 };
