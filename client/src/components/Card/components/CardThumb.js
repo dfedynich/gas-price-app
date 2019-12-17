@@ -23,8 +23,8 @@ const CardAvatar = styled.div`
 const CardAvatarImg = styled.img` 
   width: 80px;
   height: 80px;
-  border-radius: 4px;
-  border: 1px solid #fff;
+  border-radius: 50%;
+  border: 1px solid #000;
   background: #fff;
 `;
 
