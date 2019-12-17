@@ -24,7 +24,6 @@ export const useScrollRenderingDispenser = (items = [], pageSize = 5) => {
         window.addEventListener('scroll', onScrollThrottled, false);
 
         return () => {
-            console.log('rrr');
             window.removeEventListener('scroll', onScrollThrottled, false);
         };
 

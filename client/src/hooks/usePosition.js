@@ -11,7 +11,6 @@ export const usePosition = (settings = defaultSettings) => {
     const [error, setError] = useState(null);
 
     const onChange = ({coords, timestamp}) => {
-        console.log('onChange');
         setPosition({
             latitude: coords.latitude,
             longitude: coords.longitude,
